@@ -85,11 +85,11 @@ export function handleKeyboardActivation(event: KeyboardEvent, callback: () => v
 
 /**
  * Validates a character name client-side using the server's validation rule:
- * Starts with a letter, 2-16 characters, only letters, spaces, hyphens or apostrophes.
+ * Starts with a letter or CJK character, 2-16 characters, only letters, CJK characters, spaces, hyphens or apostrophes.
  * @param name The character name string to validate
  * @returns boolean indicating if the name is valid
  */
 export function validateCharacterName(name: string): boolean {
   const trimmed = name.trim();
-  return /^[A-Za-z][A-Za-z' -]{1,15}$/.test(trimmed);
+  return /^[A-Za-z\u4e00-\u9fff][A-Za-z\u4e00-\u9fff' -]{1,15}$/.test(trimmed);
 }
